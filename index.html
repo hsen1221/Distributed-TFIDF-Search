@@ -14,6 +14,9 @@
         #results { margin-top: 30px; width: 100%; max-width: 500px; }
         .result-item { background: white; padding: 15px; margin-bottom: 10px; border-radius: 5px; border-left: 5px solid #007bff; box-shadow: 0 2px 4px rgba(0,0,0,0.05); animation: fadeIn 0.5s; }
         .score { color: #28a745; font-weight: bold; float: right; }
+        /* Link styling */
+        a { text-decoration: none; color: #007bff; font-weight: bold; }
+        a:hover { text-decoration: underline; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
@@ -42,7 +45,6 @@
         resultsDiv.innerHTML = '<p style="text-align:center;">Searching cluster...</p>';
 
         try {
-            // Send POST request to our Java Frontend
             const response = await fetch('/search', {
                 method: 'POST',
                 body: query
@@ -60,17 +62,26 @@
 
     function displayResults(textResponse) {
         const resultsDiv = document.getElementById('results');
-        resultsDiv.innerHTML = ''; // Clear previous results
+        resultsDiv.innerHTML = '';
 
-        // Parse the raw text response (e.g., "file1.txt : 0.5\nfile2.txt : 0.2")
         const lines = textResponse.split('\n');
 
         lines.forEach(line => {
             if(line.includes(':')) {
                 const [fileName, score] = line.split(':');
+                const cleanName = fileName.trim();
+                const cleanScore = score.trim();
+
                 const div = document.createElement('div');
                 div.className = 'result-item';
-                div.innerHTML = `<strong>📄 ${fileName.trim()}</strong> <span class="score">Score: ${score.trim()}</span>`;
+
+                // Create a clickable link for the filename
+                // Calls the new /document endpoint
+                div.innerHTML = `
+                    <a href="/document?name=${cleanName}" target="_blank">📄 ${cleanName}</a>
+                    <span class="score">Score: ${cleanScore}</span>
+                `;
+
                 resultsDiv.appendChild(div);
             }
         });
