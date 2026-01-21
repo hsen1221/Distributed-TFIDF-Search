@@ -42,12 +42,12 @@ public final class Search {
       "odel\"5\n\tTFRequest\022\024\n\014search_query\030\001 \001(\t\022" +
       "\022\n\nfile_paths\030\002 \003(\t\"R\n\nTFResponse\022D\n\017doc" +
       "ument_scores\030\001 \003(\0132+.com.distributed.sea" +
-      "rch.model.DocumentScore\"8\n\rDocumentScore" +
+      "rch.model.DocumentScore\"F\n\rDocumentScore" +
       "\022\025\n\rdocument_name\030\001 \001(\t\022\020\n\010tf_score\030\002 \001(" +
-      "\0012o\n\tTFService\022b\n\013CalculateTF\022\'.com.dist" +
-      "ributed.search.model.TFRequest\032(.com.dis" +
-      "tributed.search.model.TFResponse\"\000B\002P\001b\006" +
-      "proto3"
+      "\001\022\014\n\004term\030\003 \001(\t2o\n\tTFService\022b\n\013Calculat" +
+      "eTF\022\'.com.distributed.search.model.TFReq" +
+      "uest\032(.com.distributed.search.model.TFRe" +
+      "sponse\"\000B\002P\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -70,7 +70,7 @@ public final class Search {
     internal_static_com_distributed_search_model_DocumentScore_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_distributed_search_model_DocumentScore_descriptor,
-        new java.lang.String[] { "DocumentName", "TfScore", });
+        new java.lang.String[] { "DocumentName", "TfScore", "Term", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

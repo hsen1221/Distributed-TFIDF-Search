@@ -36,4 +36,5 @@ message TFResponse {
 message DocumentScore {
   string document_name = 1; // The name of the document
   double tf_score = 2;      // The calculated TF value (term count / total words)
+  string term = 3;
 }

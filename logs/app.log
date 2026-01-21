@@ -145,3 +145,217 @@ java.net.ConnectException: Connection refused: no further information
 	at java.base/sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:946)
 	at org.apache.zookeeper.ClientCnxnSocketNIO.doTransport(ClientCnxnSocketNIO.java:344)
 	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1289)
+2026-01-21 15:10:52 [main-SendThread(localhost:2181)] WARN  org.apache.zookeeper.ClientCnxn - Session 0x0 for server localhost/[0:0:0:0:0:0:0:1]:2181, Closing socket connection. Attempting reconnect except it is a SessionExpiredException.
+java.net.ConnectException: Connection refused: no further information
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method)
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:672)
+	at java.base/sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:946)
+	at org.apache.zookeeper.ClientCnxnSocketNIO.doTransport(ClientCnxnSocketNIO.java:344)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1289)
+2026-01-21 19:51:06 [main-SendThread(localhost:2181)] WARN  org.apache.zookeeper.ClientCnxn - Session 0x0 for server localhost/[0:0:0:0:0:0:0:1]:2181, Closing socket connection. Attempting reconnect except it is a SessionExpiredException.
+java.net.ConnectException: Connection refused: no further information
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method)
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:672)
+	at java.base/sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:946)
+	at org.apache.zookeeper.ClientCnxnSocketNIO.doTransport(ClientCnxnSocketNIO.java:344)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1289)
+2026-01-21 19:51:24 [main-SendThread(localhost:2181)] WARN  org.apache.zookeeper.ClientCnxn - Session 0x0 for server localhost/[0:0:0:0:0:0:0:1]:2181, Closing socket connection. Attempting reconnect except it is a SessionExpiredException.
+java.net.ConnectException: Connection refused: no further information
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method)
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:672)
+	at java.base/sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:946)
+	at org.apache.zookeeper.ClientCnxnSocketNIO.doTransport(ClientCnxnSocketNIO.java:344)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1289)
+2026-01-21 19:51:26 [main-SendThread(localhost:2181)] WARN  org.apache.zookeeper.ClientCnxn - Session 0x0 for server localhost/[0:0:0:0:0:0:0:1]:2181, Closing socket connection. Attempting reconnect except it is a SessionExpiredException.
+java.net.ConnectException: Connection refused: no further information
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method)
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:672)
+	at java.base/sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:946)
+	at org.apache.zookeeper.ClientCnxnSocketNIO.doTransport(ClientCnxnSocketNIO.java:344)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1289)
+2026-01-21 19:51:27 [main-SendThread(localhost:2181)] WARN  org.apache.zookeeper.ClientCnxn - Session 0x0 for server localhost/[0:0:0:0:0:0:0:1]:2181, Closing socket connection. Attempting reconnect except it is a SessionExpiredException.
+java.net.ConnectException: Connection refused: no further information
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method)
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:672)
+	at java.base/sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:946)
+	at org.apache.zookeeper.ClientCnxnSocketNIO.doTransport(ClientCnxnSocketNIO.java:344)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1289)
+2026-01-21 19:51:28 [main-SendThread(localhost:2181)] WARN  org.apache.zookeeper.ClientCnxn - Session 0x0 for server localhost/[0:0:0:0:0:0:0:1]:2181, Closing socket connection. Attempting reconnect except it is a SessionExpiredException.
+java.net.ConnectException: Connection refused: no further information
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method)
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:672)
+	at java.base/sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:946)
+	at org.apache.zookeeper.ClientCnxnSocketNIO.doTransport(ClientCnxnSocketNIO.java:344)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1289)
+2026-01-21 20:01:41 [main-SendThread(localhost:2181)] WARN  org.apache.zookeeper.ClientCnxn - Client session timed out, have not heard from server in 2666ms for session id 0x10000005f1a0032
+2026-01-21 20:01:41 [main-SendThread(localhost:2181)] WARN  org.apache.zookeeper.ClientCnxn - Session 0x10000005f1a0032 for server localhost/127.0.0.1:2181, Closing socket connection. Attempting reconnect except it is a SessionExpiredException.
+org.apache.zookeeper.ClientCnxn$SessionTimeoutException: Client session timed out, have not heard from server in 2666ms for session id 0x10000005f1a0032
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1257)
+2026-01-21 20:01:41 [main-SendThread(localhost:2181)] WARN  org.apache.zookeeper.ClientCnxn - Client session timed out, have not heard from server in 2666ms for session id 0x10000005f1a0035
+2026-01-21 20:01:41 [main-SendThread(localhost:2181)] WARN  org.apache.zookeeper.ClientCnxn - Session 0x10000005f1a0035 for server localhost/127.0.0.1:2181, Closing socket connection. Attempting reconnect except it is a SessionExpiredException.
+org.apache.zookeeper.ClientCnxn$SessionTimeoutException: Client session timed out, have not heard from server in 2666ms for session id 0x10000005f1a0035
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1257)
+2026-01-21 20:01:41 [main-SendThread(localhost:2181)] WARN  org.apache.zookeeper.ClientCnxn - Client session timed out, have not heard from server in 2666ms for session id 0x10000005f1a0034
+2026-01-21 20:01:41 [main-SendThread(localhost:2181)] WARN  org.apache.zookeeper.ClientCnxn - Client session timed out, have not heard from server in 2666ms for session id 0x10000005f1a0033
+2026-01-21 20:01:41 [main-SendThread(localhost:2181)] WARN  org.apache.zookeeper.ClientCnxn - Session 0x10000005f1a0034 for server localhost/127.0.0.1:2181, Closing socket connection. Attempting reconnect except it is a SessionExpiredException.
+org.apache.zookeeper.ClientCnxn$SessionTimeoutException: Client session timed out, have not heard from server in 2666ms for session id 0x10000005f1a0034
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1257)
+2026-01-21 20:01:41 [main-SendThread(localhost:2181)] WARN  org.apache.zookeeper.ClientCnxn - Session 0x10000005f1a0033 for server localhost/127.0.0.1:2181, Closing socket connection. Attempting reconnect except it is a SessionExpiredException.
+org.apache.zookeeper.ClientCnxn$SessionTimeoutException: Client session timed out, have not heard from server in 2666ms for session id 0x10000005f1a0033
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1257)
+2026-01-21 20:01:44 [main-SendThread(localhost:2181)] WARN  org.apache.zookeeper.ClientCnxn - Session 0x10000005f1a0035 for server localhost/[0:0:0:0:0:0:0:1]:2181, Closing socket connection. Attempting reconnect except it is a SessionExpiredException.
+java.net.ConnectException: Connection refused: no further information
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method)
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:672)
+	at java.base/sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:946)
+	at org.apache.zookeeper.ClientCnxnSocketNIO.doTransport(ClientCnxnSocketNIO.java:344)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1289)
+2026-01-21 20:01:44 [main-SendThread(localhost:2181)] WARN  org.apache.zookeeper.ClientCnxn - Session 0x10000005f1a0033 for server localhost/[0:0:0:0:0:0:0:1]:2181, Closing socket connection. Attempting reconnect except it is a SessionExpiredException.
+java.net.ConnectException: Connection refused: no further information
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method)
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:672)
+	at java.base/sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:946)
+	at org.apache.zookeeper.ClientCnxnSocketNIO.doTransport(ClientCnxnSocketNIO.java:344)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1289)
+2026-01-21 20:01:45 [main-SendThread(localhost:2181)] WARN  org.apache.zookeeper.ClientCnxn - Session 0x10000005f1a0033 for server localhost/[0:0:0:0:0:0:0:1]:2181, Closing socket connection. Attempting reconnect except it is a SessionExpiredException.
+java.net.ConnectException: Connection refused: no further information
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method)
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:672)
+	at java.base/sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:946)
+	at org.apache.zookeeper.ClientCnxnSocketNIO.doTransport(ClientCnxnSocketNIO.java:344)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1289)
+2026-01-21 20:01:46 [main-SendThread(localhost:2181)] WARN  org.apache.zookeeper.ClientCnxn - Session 0x10000005f1a0035 for server localhost/[0:0:0:0:0:0:0:1]:2181, Closing socket connection. Attempting reconnect except it is a SessionExpiredException.
+java.net.ConnectException: Connection refused: no further information
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method)
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:672)
+	at java.base/sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:946)
+	at org.apache.zookeeper.ClientCnxnSocketNIO.doTransport(ClientCnxnSocketNIO.java:344)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1289)
+2026-01-21 20:01:47 [main-SendThread(localhost:2181)] WARN  org.apache.zookeeper.ClientCnxn - Session 0x10000005f1a0033 for server localhost/[0:0:0:0:0:0:0:1]:2181, Closing socket connection. Attempting reconnect except it is a SessionExpiredException.
+java.net.ConnectException: Connection refused: no further information
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method)
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:672)
+	at java.base/sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:946)
+	at org.apache.zookeeper.ClientCnxnSocketNIO.doTransport(ClientCnxnSocketNIO.java:344)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1289)
+2026-01-21 20:01:48 [main-SendThread(localhost:2181)] WARN  org.apache.zookeeper.ClientCnxn - Unable to reconnect to ZooKeeper service, session 0x10000005f1a0035 has expired
+2026-01-21 20:01:48 [main-SendThread(localhost:2181)] WARN  org.apache.zookeeper.ClientCnxn - Session 0x10000005f1a0035 for server localhost/127.0.0.1:2181, Closing socket connection. Attempting reconnect except it is a SessionExpiredException.
+org.apache.zookeeper.ClientCnxn$SessionExpiredException: Unable to reconnect to ZooKeeper service, session 0x10000005f1a0035 has expired
+	at org.apache.zookeeper.ClientCnxn$SendThread.onConnected(ClientCnxn.java:1438)
+	at org.apache.zookeeper.ClientCnxnSocket.readConnectResult(ClientCnxnSocket.java:154)
+	at org.apache.zookeeper.ClientCnxnSocketNIO.doIO(ClientCnxnSocketNIO.java:86)
+	at org.apache.zookeeper.ClientCnxnSocketNIO.doTransport(ClientCnxnSocketNIO.java:350)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1289)
+2026-01-21 20:01:49 [main-SendThread(localhost:2181)] WARN  org.apache.zookeeper.ClientCnxn - Session 0x10000005f1a0033 for server localhost/[0:0:0:0:0:0:0:1]:2181, Closing socket connection. Attempting reconnect except it is a SessionExpiredException.
+java.net.ConnectException: Connection refused: no further information
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method)
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:672)
+	at java.base/sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:946)
+	at org.apache.zookeeper.ClientCnxnSocketNIO.doTransport(ClientCnxnSocketNIO.java:344)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1289)
+2026-01-21 20:01:51 [main-SendThread(localhost:2181)] WARN  org.apache.zookeeper.ClientCnxn - Unable to reconnect to ZooKeeper service, session 0x10000005f1a0033 has expired
+2026-01-21 20:01:51 [main-SendThread(localhost:2181)] WARN  org.apache.zookeeper.ClientCnxn - Session 0x10000005f1a0033 for server localhost/127.0.0.1:2181, Closing socket connection. Attempting reconnect except it is a SessionExpiredException.
+org.apache.zookeeper.ClientCnxn$SessionExpiredException: Unable to reconnect to ZooKeeper service, session 0x10000005f1a0033 has expired
+	at org.apache.zookeeper.ClientCnxn$SendThread.onConnected(ClientCnxn.java:1438)
+	at org.apache.zookeeper.ClientCnxnSocket.readConnectResult(ClientCnxnSocket.java:154)
+	at org.apache.zookeeper.ClientCnxnSocketNIO.doIO(ClientCnxnSocketNIO.java:86)
+	at org.apache.zookeeper.ClientCnxnSocketNIO.doTransport(ClientCnxnSocketNIO.java:350)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1289)
+2026-01-21 21:00:57 [main-SendThread(localhost:2181)] WARN  org.apache.zookeeper.ClientCnxn - Client session timed out, have not heard from server in 2667ms for session id 0x10000005f1a0038
+2026-01-21 21:00:57 [main-SendThread(localhost:2181)] WARN  org.apache.zookeeper.ClientCnxn - Session 0x10000005f1a0038 for server localhost/127.0.0.1:2181, Closing socket connection. Attempting reconnect except it is a SessionExpiredException.
+org.apache.zookeeper.ClientCnxn$SessionTimeoutException: Client session timed out, have not heard from server in 2667ms for session id 0x10000005f1a0038
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1257)
+2026-01-21 21:00:58 [main-SendThread(localhost:2181)] WARN  org.apache.zookeeper.ClientCnxn - Client session timed out, have not heard from server in 2666ms for session id 0x10000005f1a0036
+2026-01-21 21:00:58 [main-SendThread(localhost:2181)] WARN  org.apache.zookeeper.ClientCnxn - Session 0x10000005f1a0036 for server localhost/127.0.0.1:2181, Closing socket connection. Attempting reconnect except it is a SessionExpiredException.
+org.apache.zookeeper.ClientCnxn$SessionTimeoutException: Client session timed out, have not heard from server in 2666ms for session id 0x10000005f1a0036
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1257)
+2026-01-21 21:00:58 [main-SendThread(localhost:2181)] WARN  org.apache.zookeeper.ClientCnxn - Client session timed out, have not heard from server in 2667ms for session id 0x10000005f1a0037
+2026-01-21 21:00:58 [main-SendThread(localhost:2181)] WARN  org.apache.zookeeper.ClientCnxn - Session 0x10000005f1a0037 for server localhost/127.0.0.1:2181, Closing socket connection. Attempting reconnect except it is a SessionExpiredException.
+org.apache.zookeeper.ClientCnxn$SessionTimeoutException: Client session timed out, have not heard from server in 2667ms for session id 0x10000005f1a0037
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1257)
+2026-01-21 21:00:59 [main-SendThread(localhost:2181)] WARN  org.apache.zookeeper.ClientCnxn - Session 0x10000005f1a0038 for server localhost/[0:0:0:0:0:0:0:1]:2181, Closing socket connection. Attempting reconnect except it is a SessionExpiredException.
+java.net.ConnectException: Connection refused: no further information
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method)
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:672)
+	at java.base/sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:946)
+	at org.apache.zookeeper.ClientCnxnSocketNIO.doTransport(ClientCnxnSocketNIO.java:344)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1289)
+2026-01-21 21:01:01 [main-SendThread(localhost:2181)] WARN  org.apache.zookeeper.ClientCnxn - Session 0x10000005f1a0038 for server localhost/[0:0:0:0:0:0:0:1]:2181, Closing socket connection. Attempting reconnect except it is a SessionExpiredException.
+java.net.ConnectException: Connection refused: no further information
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method)
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:672)
+	at java.base/sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:946)
+	at org.apache.zookeeper.ClientCnxnSocketNIO.doTransport(ClientCnxnSocketNIO.java:344)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1289)
+2026-01-21 21:01:02 [main-SendThread(localhost:2181)] WARN  org.apache.zookeeper.ClientCnxn - Unable to reconnect to ZooKeeper service, session 0x10000005f1a0038 has expired
+2026-01-21 21:01:02 [main-SendThread(localhost:2181)] WARN  org.apache.zookeeper.ClientCnxn - Session 0x10000005f1a0038 for server localhost/127.0.0.1:2181, Closing socket connection. Attempting reconnect except it is a SessionExpiredException.
+org.apache.zookeeper.ClientCnxn$SessionExpiredException: Unable to reconnect to ZooKeeper service, session 0x10000005f1a0038 has expired
+	at org.apache.zookeeper.ClientCnxn$SendThread.onConnected(ClientCnxn.java:1438)
+	at org.apache.zookeeper.ClientCnxnSocket.readConnectResult(ClientCnxnSocket.java:154)
+	at org.apache.zookeeper.ClientCnxnSocketNIO.doIO(ClientCnxnSocketNIO.java:86)
+	at org.apache.zookeeper.ClientCnxnSocketNIO.doTransport(ClientCnxnSocketNIO.java:350)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1289)
+2026-01-21 21:03:30 [main-SendThread(localhost:2181)] WARN  org.apache.zookeeper.ClientCnxn - Client session timed out, have not heard from server in 2667ms for session id 0x10000005f1a0036
+2026-01-21 21:03:30 [main-SendThread(localhost:2181)] WARN  org.apache.zookeeper.ClientCnxn - Session 0x10000005f1a0036 for server localhost/127.0.0.1:2181, Closing socket connection. Attempting reconnect except it is a SessionExpiredException.
+org.apache.zookeeper.ClientCnxn$SessionTimeoutException: Client session timed out, have not heard from server in 2667ms for session id 0x10000005f1a0036
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1257)
+2026-01-21 21:03:30 [main-SendThread(localhost:2181)] WARN  org.apache.zookeeper.ClientCnxn - Client session timed out, have not heard from server in 2666ms for session id 0x10000005f1a0037
+2026-01-21 21:03:30 [main-SendThread(localhost:2181)] WARN  org.apache.zookeeper.ClientCnxn - Session 0x10000005f1a0037 for server localhost/127.0.0.1:2181, Closing socket connection. Attempting reconnect except it is a SessionExpiredException.
+org.apache.zookeeper.ClientCnxn$SessionTimeoutException: Client session timed out, have not heard from server in 2666ms for session id 0x10000005f1a0037
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1257)
+2026-01-21 21:03:35 [main-SendThread(localhost:2181)] WARN  org.apache.zookeeper.ClientCnxn - Client session timed out, have not heard from server in 4000ms for session id 0x10000005f1a0036
+2026-01-21 21:03:35 [main-SendThread(localhost:2181)] WARN  org.apache.zookeeper.ClientCnxn - Session 0x10000005f1a0036 for server localhost/127.0.0.1:2181, Closing socket connection. Attempting reconnect except it is a SessionExpiredException.
+org.apache.zookeeper.ClientCnxn$SessionTimeoutException: Client session timed out, have not heard from server in 4000ms for session id 0x10000005f1a0036
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1257)
+2026-01-21 21:03:44 [main-SendThread(localhost:2181)] WARN  org.apache.zookeeper.ClientCnxn - Session 0x10000005f1a0037 for server localhost/[0:0:0:0:0:0:0:1]:2181, Closing socket connection. Attempting reconnect except it is a SessionExpiredException.
+java.net.ConnectException: Connection refused: no further information
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method)
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:672)
+	at java.base/sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:946)
+	at org.apache.zookeeper.ClientCnxnSocketNIO.doTransport(ClientCnxnSocketNIO.java:344)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1289)
+2026-01-21 21:03:44 [main-SendThread(localhost:2181)] WARN  org.apache.zookeeper.ClientCnxn - Session 0x10000005f1a0036 for server localhost/[0:0:0:0:0:0:0:1]:2181, Closing socket connection. Attempting reconnect except it is a SessionExpiredException.
+java.net.ConnectException: Connection refused: no further information
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method)
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:672)
+	at java.base/sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:946)
+	at org.apache.zookeeper.ClientCnxnSocketNIO.doTransport(ClientCnxnSocketNIO.java:344)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1289)
+2026-01-21 21:03:46 [main-SendThread(localhost:2181)] WARN  org.apache.zookeeper.ClientCnxn - Session 0x10000005f1a0037 for server localhost/[0:0:0:0:0:0:0:1]:2181, Closing socket connection. Attempting reconnect except it is a SessionExpiredException.
+java.net.ConnectException: Connection refused: no further information
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method)
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:672)
+	at java.base/sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:946)
+	at org.apache.zookeeper.ClientCnxnSocketNIO.doTransport(ClientCnxnSocketNIO.java:344)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1289)
+2026-01-21 21:03:46 [main-SendThread(localhost:2181)] WARN  org.apache.zookeeper.ClientCnxn - Unable to reconnect to ZooKeeper service, session 0x10000005f1a0036 has expired
+2026-01-21 21:03:46 [main-SendThread(localhost:2181)] WARN  org.apache.zookeeper.ClientCnxn - Session 0x10000005f1a0036 for server localhost/127.0.0.1:2181, Closing socket connection. Attempting reconnect except it is a SessionExpiredException.
+org.apache.zookeeper.ClientCnxn$SessionExpiredException: Unable to reconnect to ZooKeeper service, session 0x10000005f1a0036 has expired
+	at org.apache.zookeeper.ClientCnxn$SendThread.onConnected(ClientCnxn.java:1438)
+	at org.apache.zookeeper.ClientCnxnSocket.readConnectResult(ClientCnxnSocket.java:154)
+	at org.apache.zookeeper.ClientCnxnSocketNIO.doIO(ClientCnxnSocketNIO.java:86)
+	at org.apache.zookeeper.ClientCnxnSocketNIO.doTransport(ClientCnxnSocketNIO.java:350)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1289)
+2026-01-21 21:03:47 [main-SendThread(localhost:2181)] WARN  org.apache.zookeeper.ClientCnxn - Session 0x10000005f1a0037 for server localhost/[0:0:0:0:0:0:0:1]:2181, Closing socket connection. Attempting reconnect except it is a SessionExpiredException.
+java.net.ConnectException: Connection refused: no further information
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method)
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:672)
+	at java.base/sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:946)
+	at org.apache.zookeeper.ClientCnxnSocketNIO.doTransport(ClientCnxnSocketNIO.java:344)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1289)
+2026-01-21 21:03:53 [main-SendThread(localhost:2181)] WARN  org.apache.zookeeper.ClientCnxn - Client session timed out, have not heard from server in 4001ms for session id 0x10000005f1a0037
+2026-01-21 21:03:53 [main-SendThread(localhost:2181)] WARN  org.apache.zookeeper.ClientCnxn - Session 0x10000005f1a0037 for server localhost/127.0.0.1:2181, Closing socket connection. Attempting reconnect except it is a SessionExpiredException.
+org.apache.zookeeper.ClientCnxn$SessionTimeoutException: Client session timed out, have not heard from server in 4001ms for session id 0x10000005f1a0037
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1257)
+2026-01-21 21:03:59 [main-SendThread(localhost:2181)] WARN  org.apache.zookeeper.ClientCnxn - Client session timed out, have not heard from server in 4001ms for session id 0x10000005f1a0037
+2026-01-21 21:03:59 [main-SendThread(localhost:2181)] WARN  org.apache.zookeeper.ClientCnxn - Session 0x10000005f1a0037 for server localhost/127.0.0.1:2181, Closing socket connection. Attempting reconnect except it is a SessionExpiredException.
+org.apache.zookeeper.ClientCnxn$SessionTimeoutException: Client session timed out, have not heard from server in 4001ms for session id 0x10000005f1a0037
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1257)
+2026-01-21 21:04:01 [main-SendThread(localhost:2181)] WARN  org.apache.zookeeper.ClientCnxn - Unable to reconnect to ZooKeeper service, session 0x10000005f1a0037 has expired
+2026-01-21 21:04:01 [main-SendThread(localhost:2181)] WARN  org.apache.zookeeper.ClientCnxn - Session 0x10000005f1a0037 for server localhost/127.0.0.1:2181, Closing socket connection. Attempting reconnect except it is a SessionExpiredException.
+org.apache.zookeeper.ClientCnxn$SessionExpiredException: Unable to reconnect to ZooKeeper service, session 0x10000005f1a0037 has expired
+	at org.apache.zookeeper.ClientCnxn$SendThread.onConnected(ClientCnxn.java:1438)
+	at org.apache.zookeeper.ClientCnxnSocket.readConnectResult(ClientCnxnSocket.java:154)
+	at org.apache.zookeeper.ClientCnxnSocketNIO.doIO(ClientCnxnSocketNIO.java:86)
+	at org.apache.zookeeper.ClientCnxnSocketNIO.doTransport(ClientCnxnSocketNIO.java:350)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1289)

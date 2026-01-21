@@ -183,6 +183,7 @@ public class Frontend implements Watcher {
             if (children.isEmpty()) return null;
             Collections.sort(children);
             String leaderZnode = children.get(0);
+            //ip port
             byte[] data = zooKeeper.getData(ELECTION_NAMESPACE + "/" + leaderZnode, false, null);
             return new String(data);
         } catch (Exception e) {

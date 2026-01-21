@@ -1,1 +1,0 @@
-search engines use distributed systems for better performance

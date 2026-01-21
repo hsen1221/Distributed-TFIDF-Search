@@ -16,6 +16,10 @@ import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
+/**
+ * Service implementation for the Worker node.
+ * Calculates Term Frequency (TF) for assigned documents.
+ */
 public class TFServiceImpl extends TFServiceGrpc.TFServiceImplBase {
 
     // The shared directory containing the document files
@@ -24,7 +28,7 @@ public class TFServiceImpl extends TFServiceGrpc.TFServiceImplBase {
     @Override
     public void calculateTF(TFRequest request, StreamObserver<TFResponse> responseObserver) {
 
-        // 1. Parse the search query: Normalize to lowercase and split into terms
+        // 1. Parse the search query: Normalize to lowercase and split into individual terms
         String searchQuery = request.getSearchQuery().toLowerCase();
         List<String> searchTerms = Arrays.asList(searchQuery.split("\\s+"));
         List<String> filePaths = request.getFilePathsList();
@@ -36,7 +40,7 @@ public class TFServiceImpl extends TFServiceGrpc.TFServiceImplBase {
             try {
                 Path path = Paths.get(DOCUMENTS_DIRECTORY, fileName);
 
-                // Read content using Java 11's readString (more efficient)
+                // Read content using Java 11's readString (efficient for text files)
                 String content = Files.readString(path).toLowerCase();
 
                 // Tokenize content into words
@@ -49,27 +53,29 @@ public class TFServiceImpl extends TFServiceGrpc.TFServiceImplBase {
                 }
 
                 // Optimization: Create a Frequency Map of the document words.
-                // This reduces complexity from O(N*M) to O(N), where N=doc length, M=query length.
+                // This maps "word" -> count. Example: { "distributed": 5, "system": 2 }
+                // This makes lookup O(1) instead of re-scanning the array.
                 Map<String, Long> wordCounts = Arrays.stream(words)
                         .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
 
-                double cumulativeTF = 0.0;
-
-                // Calculate TF for the search terms
-                // Formula: TF = (Term Count in Doc / Total Words in Doc)
+                // 3. Calculate TF for EACH search term separately
+                // We do NOT sum them up here. We send back (Term, TF) pairs.
                 for (String term : searchTerms) {
                     long termCount = wordCounts.getOrDefault(term, 0L);
-                    cumulativeTF += (double) termCount / totalWords;
-                }
 
-                // Only return results if the document contains at least one of the terms
-                if (cumulativeTF > 0) {
-                    responseBuilder.addDocumentScores(
-                            DocumentScore.newBuilder()
-                                    .setDocumentName(fileName)
-                                    .setTfScore(cumulativeTF)
-                                    .build()
-                    );
+                    if (termCount > 0) {
+                        // Formula: TF = (Count of Term in Doc) / (Total Words in Doc)
+                        double tf = (double) termCount / totalWords;
+
+                        // Add a specific score entry for this term
+                        responseBuilder.addDocumentScores(
+                                DocumentScore.newBuilder()
+                                        .setDocumentName(fileName)
+                                        .setTerm(term)      // Important: Identify which term this score is for
+                                        .setTfScore(tf)
+                                        .build()
+                        );
+                    }
                 }
 
             } catch (IOException e) {
@@ -77,7 +83,7 @@ public class TFServiceImpl extends TFServiceGrpc.TFServiceImplBase {
             }
         }
 
-        // 3. Send the response back to the Leader
+        // 4. Send the response back to the Leader
         responseObserver.onNext(responseBuilder.build());
         responseObserver.onCompleted();
     }

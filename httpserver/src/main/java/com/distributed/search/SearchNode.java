@@ -57,8 +57,6 @@ public class SearchNode implements OnElectionCallback, Watcher {
     /**
      * Starts the node, connects to the cluster, and initiates role selection.
      */
-    // inside SearchNode.java
-
     public void start() throws Exception {
         // 1. Connect to Zookeeper
         connectToZookeeper();
@@ -83,12 +81,13 @@ public class SearchNode implements OnElectionCallback, Watcher {
         System.out.println("HTTP Server started on port " + serverPort);
 
         // 5. Volunteer for Leadership
-        // --- CHANGE HERE: Pass the HTTP address ---
+        // Pass the HTTP address so Frontend can find us
         String currentAddress = "localhost:" + serverPort;
         leaderElection.volunteerForLeadership(currentAddress);
 
         leaderElection.reelectLeader();
     }
+
     /**
      * Establishes connection to Zookeeper and waits for the SyncConnected event.
      */
@@ -184,7 +183,9 @@ public class SearchNode implements OnElectionCallback, Watcher {
             }
 
             // 5. Send tasks to workers via gRPC and aggregate results
-            List<DocumentScore> allScores = new ArrayList<>();
+            // Note: We use a List to collect ALL individual term scores from workers.
+            List<DocumentScore> allTermScores = new ArrayList<>();
+
             for (Map.Entry<String, List<String>> entry : tasks.entrySet()) {
                 String workerAddress = entry.getKey();
                 List<String> filesForWorker = entry.getValue();
@@ -195,7 +196,6 @@ public class SearchNode implements OnElectionCallback, Watcher {
                 int port = Integer.parseInt(parts[1]);
 
                 // Establish gRPC connection
-                // Note: In production, channels should be reused/cached for performance.
                 ManagedChannel channel = ManagedChannelBuilder.forAddress(host, port)
                         .usePlaintext()
                         .build();
@@ -209,7 +209,8 @@ public class SearchNode implements OnElectionCallback, Watcher {
 
                 try {
                     TFResponse response = stub.calculateTF(request);
-                    allScores.addAll(response.getDocumentScoresList());
+                    // Add all individual term scores to our list
+                    allTermScores.addAll(response.getDocumentScoresList());
                 } catch (Exception e) {
                     System.err.println("Worker " + workerAddress + " failed: " + e.getMessage());
                 } finally {
@@ -217,27 +218,46 @@ public class SearchNode implements OnElectionCallback, Watcher {
                 }
             }
 
-            // 6. Calculate IDF and Final Scores
-            // IDF = log(TotalDocs / DocsWithTerm)
-            // Using allScores.size() as DocsWithTerm (since workers only return valid matches)
-            double idf = 0;
-            if (!allScores.isEmpty()) {
-                idf = Math.log((double) allFiles.size() / allScores.size());
+            // --- NEW SCORING LOGIC STARTS HERE ---
+
+            // 6. Calculate IDF for each term
+            // Map: Term -> Count of documents that contain this term
+            // We use the 'term' field from the DocumentScore object (make sure to update .proto!)
+            Map<String, Integer> docFrequencyMap = new HashMap<>();
+            for (DocumentScore score : allTermScores) {
+                docFrequencyMap.put(score.getTerm(), docFrequencyMap.getOrDefault(score.getTerm(), 0) + 1);
             }
 
-            // Apply TF * IDF
-            Map<String, Double> finalScores = new HashMap<>();
-            for (DocumentScore doc : allScores) {
-                double tfIdf = doc.getTfScore() * idf;
-                finalScores.put(doc.getDocumentName(), tfIdf);
+            Map<String, Double> idfMap = new HashMap<>();
+            for (String term : docFrequencyMap.keySet()) {
+                int docsWithTerm = docFrequencyMap.get(term);
+                // IDF = log(Total Docs / Docs with Term)
+                double idf = Math.log((double) allFiles.size() / docsWithTerm);
+                idfMap.put(term, idf);
             }
 
-            // 7. Sort results (Descending order by score)
-            List<Map.Entry<String, Double>> sortedResults = finalScores.entrySet().stream()
+            // 7. Calculate Total Score per Document
+            // Score = Sum(TF * IDF) for each term in the doc
+            Map<String, Double> finalDocScores = new HashMap<>();
+
+            for (DocumentScore score : allTermScores) {
+                double tf = score.getTfScore();
+                double idf = idfMap.getOrDefault(score.getTerm(), 0.0);
+                double termScore = tf * idf;
+
+                // Add to the document's total score
+                finalDocScores.put(
+                        score.getDocumentName(),
+                        finalDocScores.getOrDefault(score.getDocumentName(), 0.0) + termScore
+                );
+            }
+
+            // 8. Sort results (Descending order by score)
+            List<Map.Entry<String, Double>> sortedResults = finalDocScores.entrySet().stream()
                     .sorted((e1, e2) -> e2.getValue().compareTo(e1.getValue()))
                     .collect(Collectors.toList());
 
-            // 8. Construct and send response
+            // 9. Construct and send response
             StringBuilder resultBuilder = new StringBuilder("Results for '" + query + "':\n");
             for (Map.Entry<String, Double> entry : sortedResults) {
                 resultBuilder.append(entry.getKey())

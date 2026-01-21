@@ -36,4 +36,16 @@ public interface DocumentScoreOrBuilder extends
    * @return The tfScore.
    */
   double getTfScore();
+
+  /**
+   * <code>string term = 3;</code>
+   * @return The term.
+   */
+  java.lang.String getTerm();
+  /**
+   * <code>string term = 3;</code>
+   * @return The bytes for term.
+   */
+  com.google.protobuf.ByteString
+      getTermBytes();
 }

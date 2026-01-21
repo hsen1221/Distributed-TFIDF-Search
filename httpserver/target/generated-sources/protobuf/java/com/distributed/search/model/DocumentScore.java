@@ -22,6 +22,7 @@ private static final long serialVersionUID = 0L;
   }
   private DocumentScore() {
     documentName_ = "";
+    term_ = "";
   }
 
   @java.lang.Override
@@ -110,6 +111,44 @@ private static final long serialVersionUID = 0L;
     return tfScore_;
   }
 
+  public static final int TERM_FIELD_NUMBER = 3;
+  private volatile java.lang.Object term_;
+  /**
+   * <code>string term = 3;</code>
+   * @return The term.
+   */
+  @java.lang.Override
+  public java.lang.String getTerm() {
+    java.lang.Object ref = term_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      term_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string term = 3;</code>
+   * @return The bytes for term.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getTermBytes() {
+    java.lang.Object ref = term_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      term_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -130,6 +169,9 @@ private static final long serialVersionUID = 0L;
     if (java.lang.Double.doubleToRawLongBits(tfScore_) != 0) {
       output.writeDouble(2, tfScore_);
     }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(term_)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 3, term_);
+    }
     getUnknownFields().writeTo(output);
   }
 
@@ -145,6 +187,9 @@ private static final long serialVersionUID = 0L;
     if (java.lang.Double.doubleToRawLongBits(tfScore_) != 0) {
       size += com.google.protobuf.CodedOutputStream
         .computeDoubleSize(2, tfScore_);
+    }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(term_)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, term_);
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -166,6 +211,8 @@ private static final long serialVersionUID = 0L;
     if (java.lang.Double.doubleToLongBits(getTfScore())
         != java.lang.Double.doubleToLongBits(
             other.getTfScore())) return false;
+    if (!getTerm()
+        .equals(other.getTerm())) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -182,6 +229,8 @@ private static final long serialVersionUID = 0L;
     hash = (37 * hash) + TF_SCORE_FIELD_NUMBER;
     hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
         java.lang.Double.doubleToLongBits(getTfScore()));
+    hash = (37 * hash) + TERM_FIELD_NUMBER;
+    hash = (53 * hash) + getTerm().hashCode();
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -319,6 +368,8 @@ private static final long serialVersionUID = 0L;
 
       tfScore_ = 0D;
 
+      term_ = "";
+
       return this;
     }
 
@@ -347,6 +398,7 @@ private static final long serialVersionUID = 0L;
       com.distributed.search.model.DocumentScore result = new com.distributed.search.model.DocumentScore(this);
       result.documentName_ = documentName_;
       result.tfScore_ = tfScore_;
+      result.term_ = term_;
       onBuilt();
       return result;
     }
@@ -402,6 +454,10 @@ private static final long serialVersionUID = 0L;
       if (other.getTfScore() != 0D) {
         setTfScore(other.getTfScore());
       }
+      if (!other.getTerm().isEmpty()) {
+        term_ = other.term_;
+        onChanged();
+      }
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
       return this;
@@ -438,6 +494,11 @@ private static final long serialVersionUID = 0L;
 
               break;
             } // case 17
+            case 26: {
+              term_ = input.readStringRequireUtf8();
+
+              break;
+            } // case 26
             default: {
               if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                 done = true; // was an endgroup tag
@@ -589,6 +650,82 @@ private static final long serialVersionUID = 0L;
     public Builder clearTfScore() {
       
       tfScore_ = 0D;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object term_ = "";
+    /**
+     * <code>string term = 3;</code>
+     * @return The term.
+     */
+    public java.lang.String getTerm() {
+      java.lang.Object ref = term_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        term_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>string term = 3;</code>
+     * @return The bytes for term.
+     */
+    public com.google.protobuf.ByteString
+        getTermBytes() {
+      java.lang.Object ref = term_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        term_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string term = 3;</code>
+     * @param value The term to set.
+     * @return This builder for chaining.
+     */
+    public Builder setTerm(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      term_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string term = 3;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearTerm() {
+      
+      term_ = getDefaultInstance().getTerm();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string term = 3;</code>
+     * @param value The bytes for term to set.
+     * @return This builder for chaining.
+     */
+    public Builder setTermBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      term_ = value;
       onChanged();
       return this;
     }

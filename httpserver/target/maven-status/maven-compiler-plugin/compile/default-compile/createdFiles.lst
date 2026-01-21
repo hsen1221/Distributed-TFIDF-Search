@@ -1,3 +1,4 @@
+com\distributed\search\frontend\Frontend.class
 com\distributed\search\model\TFServiceGrpc$1.class
 com\distributed\search\model\TFRequest$1.class
 com\distributed\search\model\TFResponse$Builder.class
@@ -7,7 +8,6 @@ com\distributed\search\model\DocumentScoreOrBuilder.class
 com\distributed\search\cluster\OnElectionCallback.class
 com\distributed\search\cluster\LeaderElection.class
 com\distributed\search\model\TFServiceGrpc$TFServiceImplBase.class
-com\distributed\search\cluster\LeaderElection$1.class
 com\distributed\search\model\TFRequestOrBuilder.class
 com\distributed\search\model\TFServiceGrpc$TFServiceBlockingStub.class
 com\distributed\search\model\TFServiceGrpc$2.class

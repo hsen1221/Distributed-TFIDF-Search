@@ -1,4 +1,3 @@
-# Network Communication
 
 ## Simple HTTP Server and Client
 
