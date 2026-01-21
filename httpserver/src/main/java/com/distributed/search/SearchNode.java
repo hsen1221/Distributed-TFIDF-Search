@@ -57,16 +57,17 @@ public class SearchNode implements OnElectionCallback, Watcher {
     /**
      * Starts the node, connects to the cluster, and initiates role selection.
      */
+    // inside SearchNode.java
+
     public void start() throws Exception {
-        // 1. Connect to Zookeeper (Blocking until successful)
+        // 1. Connect to Zookeeper
         connectToZookeeper();
 
-        // 2. Initialize cluster management components
+        // 2. Init components
         this.serviceRegistry = new ServiceRegistry(zooKeeper);
         this.leaderElection = new LeaderElection(zooKeeper, this);
 
-        // 3. Start gRPC Server (For internal communication)
-        // This is needed whether we are a Leader (for future expansion) or Worker (to receive tasks)
+        // 3. Start gRPC
         int grpcPort = serverPort + GRPC_PORT_OFFSET;
         this.grpcServer = ServerBuilder.forPort(grpcPort)
                 .addService(new TFServiceImpl())
@@ -74,19 +75,20 @@ public class SearchNode implements OnElectionCallback, Watcher {
                 .start();
         System.out.println("gRPC Server started on port " + grpcPort);
 
-        // 4. Start HTTP Server (For external client requests)
-        // Only the Leader processes these, but we start it on all nodes for simplicity/failover readiness
+        // 4. Start HTTP
         this.httpServer = HttpServer.create(new InetSocketAddress(serverPort), 0);
         this.httpServer.createContext("/search", this::handleSearchRequest);
         this.httpServer.setExecutor(Executors.newFixedThreadPool(10));
         this.httpServer.start();
         System.out.println("HTTP Server started on port " + serverPort);
 
-        // 5. Attempt to become the Leader
-        leaderElection.volunteerForLeadership();
+        // 5. Volunteer for Leadership
+        // --- CHANGE HERE: Pass the HTTP address ---
+        String currentAddress = "localhost:" + serverPort;
+        leaderElection.volunteerForLeadership(currentAddress);
+
         leaderElection.reelectLeader();
     }
-
     /**
      * Establishes connection to Zookeeper and waits for the SyncConnected event.
      */

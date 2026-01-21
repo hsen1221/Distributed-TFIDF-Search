@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Distributed Search Engine</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f4f9; display: flex; flex-direction: column; align-items: center; padding-top: 50px; }
+        h1 { color: #333; }
+        .search-container { background: white; padding: 30px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); width: 100%; max-width: 500px; text-align: center; }
+        input[type="text"] { width: 80%; padding: 12px; border: 1px solid #ddd; border-radius: 5px; font-size: 16px; margin-bottom: 15px; }
+        button { background-color: #007bff; color: white; padding: 12px 24px; border: none; border-radius: 5px; cursor: pointer; font-size: 16px; transition: background 0.3s; }
+        button:hover { background-color: #0056b3; }
+        #results { margin-top: 30px; width: 100%; max-width: 500px; }
+        .result-item { background: white; padding: 15px; margin-bottom: 10px; border-radius: 5px; border-left: 5px solid #007bff; box-shadow: 0 2px 4px rgba(0,0,0,0.05); animation: fadeIn 0.5s; }
+        .score { color: #28a745; font-weight: bold; float: right; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body>
+
+<h1>🔍 Distributed Search</h1>
+
+<div class="search-container">
+    <input type="text" id="queryInput" placeholder="Enter search term (e.g., distributed)...">
+    <br>
+    <button onclick="performSearch()">Search</button>
+</div>
+
+<div id="results"></div>
+
+<script>
+    async function performSearch() {
+        const query = document.getElementById('queryInput').value;
+        const resultsDiv = document.getElementById('results');
+
+        if (!query.trim()) {
+            alert("Please enter a search term");
+            return;
+        }
+
+        resultsDiv.innerHTML = '<p style="text-align:center;">Searching cluster...</p>';
+
+        try {
+            // Send POST request to our Java Frontend
+            const response = await fetch('/search', {
+                method: 'POST',
+                body: query
+            });
+
+            if (!response.ok) throw new Error("Server Error");
+
+            const text = await response.text();
+            displayResults(text);
+
+        } catch (error) {
+            resultsDiv.innerHTML = `<p style="color:red; text-align:center;">Error: ${error.message}</p>`;
+        }
+    }
+
+    function displayResults(textResponse) {
+        const resultsDiv = document.getElementById('results');
+        resultsDiv.innerHTML = ''; // Clear previous results
+
+        // Parse the raw text response (e.g., "file1.txt : 0.5\nfile2.txt : 0.2")
+        const lines = textResponse.split('\n');
+
+        lines.forEach(line => {
+            if(line.includes(':')) {
+                const [fileName, score] = line.split(':');
+                const div = document.createElement('div');
+                div.className = 'result-item';
+                div.innerHTML = `<strong>📄 ${fileName.trim()}</strong> <span class="score">Score: ${score.trim()}</span>`;
+                resultsDiv.appendChild(div);
+            }
+        });
+
+        if (resultsDiv.innerHTML === '') {
+             resultsDiv.innerHTML = '<p style="text-align:center;">No matches found.</p>';
+        }
+    }
+</script>
+</body>
+</html>
