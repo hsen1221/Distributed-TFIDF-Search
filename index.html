@@ -67,6 +67,12 @@
         const lines = textResponse.split('\n');
 
         lines.forEach(line => {
+            // --- FIX IS HERE ---
+            // We ignore lines that are empty OR contain the header "Results for"
+            if (!line.trim() || line.startsWith("Results for")) {
+                return;
+            }
+
             if(line.includes(':')) {
                 const [fileName, score] = line.split(':');
                 const cleanName = fileName.trim();
@@ -76,7 +82,6 @@
                 div.className = 'result-item';
 
                 // Create a clickable link for the filename
-                // Calls the new /document endpoint
                 div.innerHTML = `
                     <a href="/document?name=${cleanName}" target="_blank">📄 ${cleanName}</a>
                     <span class="score">Score: ${cleanScore}</span>
