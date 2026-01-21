@@ -218,19 +218,22 @@ public class SearchNode implements OnElectionCallback, Watcher {
                 }
             }
 
-            // --- NEW SCORING LOGIC STARTS HERE ---
+            // --- NEW SCORING LOGIC WITH FAILURE CASE FIX ---
 
             // 6. Calculate IDF for each term
-            // Map: Term -> Count of documents that contain this term
-            // We use the 'term' field from the DocumentScore object (make sure to update .proto!)
-            Map<String, Integer> docFrequencyMap = new HashMap<>();
+            // FIX: If user searches "car car", we get 2 results for "car" from the same file.
+            // We must use a SET to count unique documents per term to avoid IDF errors.
+            Map<String, Set<String>> termToDocs = new HashMap<>();
+
             for (DocumentScore score : allTermScores) {
-                docFrequencyMap.put(score.getTerm(), docFrequencyMap.getOrDefault(score.getTerm(), 0) + 1);
+                termToDocs.computeIfAbsent(score.getTerm(), k -> new HashSet<>()).add(score.getDocumentName());
             }
 
             Map<String, Double> idfMap = new HashMap<>();
-            for (String term : docFrequencyMap.keySet()) {
-                int docsWithTerm = docFrequencyMap.get(term);
+            for (Map.Entry<String, Set<String>> entry : termToDocs.entrySet()) {
+                String term = entry.getKey();
+                int docsWithTerm = entry.getValue().size(); // Correct unique count
+
                 // IDF = log(Total Docs / Docs with Term)
                 double idf = Math.log((double) allFiles.size() / docsWithTerm);
                 idfMap.put(term, idf);
