@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+// Generates separate .java files for each class (Service, Request, Response)
+option java_multiple_files = true;
+// Defines the package for the generated Java code
+package com.distributed.search.model;
+
+/**
+ * Service definition for Term Frequency (TF) calculation.
+ * Workers implement this service to process documents assigned by the Leader.
+ */
+service TFService {
+  // RPC method to calculate TF for a list of documents based on a query.
+  rpc CalculateTF (TFRequest) returns (TFResponse) {}
+}
+
+/**
+ * Request message sent from the Leader (Coordinator) to a Worker.
+ */
+message TFRequest {
+  string search_query = 1;        // The search query string (e.g., "distributed systems")
+  repeated string file_paths = 2; // List of document filenames the Worker must process
+}
+
+/**
+ * Response message sent from a Worker back to the Leader.
+ */
+message TFResponse {
+  // A list containing the score results for each processed document
+  repeated DocumentScore document_scores = 1;
+}
+
+/**
+ * Represents the calculation result for a single document.
+ */
+message DocumentScore {
+  string document_name = 1; // The name of the document
+  double tf_score = 2;      // The calculated TF value (term count / total words)
+  string term = 3;
+}
